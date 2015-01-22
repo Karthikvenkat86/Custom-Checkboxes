@@ -1,0 +1,58 @@
+/*****************  Custom radio and checkbox *********************/
+
+/* hide the real form element by opacity: 0 and position: absolute - display: block and visibility: hidden do not work because then form elements cannot get the focus and actually get checked or unchecked */
+.skinned-form-controls input[type="checkbox"]
+{
+	position: absolute;
+	-moz-opacity: 0;
+	-webkit-opacity: 0;
+	opacity: 0;
+}
+
+/* prevent the entire page from scrolling if there is overflow and checkbox or radio button are clicked */
+.skinned-form-controls label
+{
+	position: relative;
+	padding:10px 0;
+}
+
+/* fallback for IE6, IE7 and IE8 */
+.skinned-form-controls input[type="checkbox"]
+{
+	position: static\9;
+}
+
+.skinned-form-controls input[type="checkbox"] + span::before
+{
+	content: "";
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	background-repeat:  no-repeat;
+}
+.skinned-form-controls input[type="checkbox"] + span::before{
+	background-position: 1px -17px;
+}
+
+.skinned-form-controls input[type="checkbox"]:checked + span::before
+{
+	background-position: -17px -17px;
+}
+
+/* disabled form elements */
+
+.skinned-form-controls input[type="checkbox"]:disabled + span,
+.skinned-form-controls input[type="checkbox"]:disabled + span::before
+{
+	-moz-opacity: .4;
+	-webkit-opacity: .4;
+	opacity: .4;
+}
+
+/* skin-specific sprite */
+.skinned-form-controls input[type="checkbox"] + span::before
+{
+	background-image: url("images/sprite.png");
+}
+/*************************/
